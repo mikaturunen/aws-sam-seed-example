@@ -81,7 +81,7 @@ There, you've run the SAM tooling locally and tested the Lambda on it's own and 
 
 ## Deploying the example to AWS
 
-You need to have `AWS Access Key ID` and `` at hand. Preferrably configured in with `aws configure`. This guide does not help you with those but assumes you know what you're doing. 
+You need to have `AWS Access Key ID` and `AWS Secret Access Key` at hand. Preferrably configured in with `aws configure`. This guide does not help you with those but assumes you know what you're doing. 
 
 Running the below commands assume that you have everything correctly configured in with `aws configure` so that you can freely use the CLI. `SAM` under the hood just simply uses `AWS CLI` to communicate into AWS.
 
