@@ -1,0 +1,22 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+
+Description: An example RESTful service
+Resources:
+  Hello:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: ./release
+      Runtime: nodejs6.10
+      Handler: index.handler
+      Events:
+        EndPoint:
+          Type: Api
+          Properties:
+            Path: /hello
+            Method: get
+
+Outputs:
+  endpoint:
+    Description: "The API Gateway for HelloWorld Example."
+    Value: !Sub 'https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com' 
