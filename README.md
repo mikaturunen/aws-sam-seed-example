@@ -1,5 +1,18 @@
 # Example of simple SAM application
 
+What is this repository? It's a simple example and a seed project for those interested in testing the `aws-sam-local`. Essentially running the Serverless application model (in laymans terms: AWS Lambdas, ApiGateway and the whole hoogey boogey) locally. `aws-sam-local` is developed and maintained by AWS Labs.
+
+The seed consists of the following:
+
+* TypeScript example Lambda
+** `npm run build` compiles it
+* JavaScript tests for the example Lambda (I was lazy, didn't bother to compile the tests, extra 5mins of work will fix that)
+** `npm run test` runs the tests
+
+Tests can be found from the directory `tests`. Essentially it uses `mocha` as testing framework and `chai` for BBD -style tests.
+
+The whole idea is to run everything locally (with the below commands to run portion) until you're ready to test in AWS and throw them in there after that. 
+ 
 ## Requirements
 
 * [NVM (node version manager)](https://github.com/creationix/nvm)
@@ -24,20 +37,18 @@ $ sam --version
 
 $ npm run build
 
-    > sam-seed@1.0.0 build /Users/nalle/repos/apigateway/test
+    > sam-seed@1.0.0 build ./project
     > tsc
 
 $ npm run test
 
-    > sam-seed@1.0.0 test /Users/nalle/repos/apigateway/test
+    > sam-seed@1.0.0 test ./project
     > mocha tests/**/*.js
 
     Lambda invokation
         handles correct event content by
-    Debug: event received: {"body":"Mika"}
         ✓ returning the correct "Hello Mika!"
         handles incorrect event content by
-    Debug: event received: {}
         ✓ returning a correct status code
 
 
@@ -69,7 +80,7 @@ $ sam local start-api
 # Open browser to http://127.0.0.1:3000/hello
 
     2018/01/02 08:50:34 Invoking index.handler (nodejs6.10)
-    2018/01/02 08:50:34 Mounting /Users/nalle/repos/apigateway/test as /var/task:ro inside runtime container
+    2018/01/02 08:50:34 Mounting ./project as /var/task:ro inside runtime container
     START RequestId: f405fe79-b406-1e1c-bbb9-cbabb9c6cb29 Version: $LATEST
     2018-01-02T06:50:39.931Z        f405fe79-b406-1e1c-bbb9-cbabb9c6cb29    Debug: event received: {"httpMethod":"GET","body":"","resource":"/hello","requestContext":{"resourcePath":"/hello","httpMethod":"GET","stage":"prod","identity":{"sourceIp":"127.0.0.1:56038"}},"queryStringParameters":{},"headers":{"Accept":"text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8","Accept-Encoding":"gzip, deflate, br","Accept-Language":"en-US,en;q=0.9,fi;q=0.8","Connection":"keep-alive","Upgrade-Insecure-Requests":"1","User-Agent":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.84 Safari/537.36"},"pathParameters":null,"stageVariables":null,"path":"/hello"}
     END RequestId: f405fe79-b406-1e1c-bbb9-cbabb9c6cb29
