@@ -5,9 +5,9 @@ What is this repository? It's a simple example and a seed project for those inte
 The seed consists of the following:
 
 * TypeScript example Lambda
-** `npm run build` compiles it
+   * `npm run build` compiles it
 * JavaScript tests for the example Lambda (I was lazy, didn't bother to compile the tests, extra 5mins of work will fix that)
-** `npm run test` runs the tests
+   * `npm run test` runs the tests
 
 Tests can be found from the directory `tests`. Essentially it uses `mocha` as testing framework and `chai` for BBD -style tests.
 
